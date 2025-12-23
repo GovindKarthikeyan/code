@@ -10,7 +10,8 @@ import { createRoot, Root } from "react-dom/client";
 export function createWebComponent(
   Component: React.ComponentType<any>,
   tagName: string,
-  observedAttributes: string[] = []
+  observedAttributes: string[] = [],
+  targetWindow: Window & typeof globalThis = window
 ) {
   class ReactWebComponent extends HTMLElement {
     private root: Root | null = null;
@@ -149,8 +150,8 @@ export function createWebComponent(
   }
 
   // Register the custom element if not already registered
-  if (!customElements.get(tagName)) {
-    customElements.define(tagName, ReactWebComponent);
+  if (!targetWindow.customElements.get(tagName)) {
+    targetWindow.customElements.define(tagName, ReactWebComponent);
   }
 
   return ReactWebComponent;
