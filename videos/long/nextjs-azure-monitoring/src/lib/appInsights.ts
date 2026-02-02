@@ -97,5 +97,15 @@ export async function flushTelemetry(): Promise<void> {
 }
 
 export function trackAvailability(name: string, duration: number, success: boolean, message?: string, properties?: Record<string, string>): void {
-  if (client) client.trackAvailability({ id: crypto.randomUUID(), name, duration, success, runLocation: process.env.WEBSITE_SITE_NAME || 'local', message: message || (success ? 'Health check passed' : 'Health check failed'), properties: { ...properties, timestamp: new Date().toISOString() } });
+  if (client) {
+    client.trackAvailability({
+      id: crypto.randomUUID(),
+      name,
+      duration,
+      success,
+      runLocation: process.env.WEBSITE_SITE_NAME || 'local',
+      message: message || (success ? 'Health check passed' : 'Health check failed'),
+      properties: { ...properties, timestamp: new Date().toISOString() }
+    });
+  }
 }

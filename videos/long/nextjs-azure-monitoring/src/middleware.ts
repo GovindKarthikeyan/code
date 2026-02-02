@@ -4,7 +4,7 @@
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 
-function generateRequestId(): string { return `req_${Date.now().toString(36)}_${Math.random().toString(36).substr(2, 9)}`; }
+function generateRequestId(): string { return `req_${Date.now().toString(36)}_${Math.random().toString(36).substring(2, 11)}`; }
 
 export function middleware(request: NextRequest) {
   const startTime = Date.now();
