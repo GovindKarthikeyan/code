@@ -1,0 +1,10 @@
+# iisnode configuration
+nodeProcessCommandLine: "%programfiles%\nodejs\node.exe"
+node_env: production
+loggingEnabled: true
+devErrorsEnabled: false
+watchedFiles: "*.js;package.json;iisnode.yml;web.config"
+maxConcurrentRequestsPerProcess: 1024
+gracefulShutdownTimeout: 60000
+enableXFF: true
+recycleSignalEnabled: true
